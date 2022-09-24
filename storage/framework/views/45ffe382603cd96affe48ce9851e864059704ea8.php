@@ -14,9 +14,9 @@
 
                     <select name="type_course" class="form-control" id="">
                         <option value="">Selecione o tipo do curso</option>
-                        @foreach($tipo_curso as $tipo)
-                            <option value="{{$tipo->id}}">{{$tipo->name}}</option>
-                        @endforeach
+                        <?php $__currentLoopData = $tipo_curso; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <option value="<?php echo e($tipo->id); ?>"><?php echo e($tipo->name); ?></option>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
 
                 </div>
@@ -63,3 +63,4 @@
 
     </div>
 </div>
+<?php /**PATH C:\Users\Lucas Barbosa\Desktop\Projeto-Estudos\EAD-LARAVEL\resources\views/components/form-curso.blade.php ENDPATH**/ ?>

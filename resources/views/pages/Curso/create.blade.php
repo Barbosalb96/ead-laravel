@@ -15,8 +15,8 @@
                     @endforeach
                 </div>
             @endif
- 
-            <form action="{{route('alunos.store')}}" method="post">
+
+            <form action="{{route('curso.store')}}" method="post">
                 @csrf
                 @include('components.form-curso')
                 <button type="submit" class="btn btn-success col-md-1 m-4">Cadastrar</button>

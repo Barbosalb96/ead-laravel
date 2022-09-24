@@ -17,7 +17,13 @@ class CreateCursosTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('amount_period');
-            $table->string('time');
+            $table->string('shift');
+            $table->string('modality');
+            $table->text('description');
+            $table->decimal('price', 9, 3);
+            $table->integer('status')->default(1);
+            $table->unsignedBigInteger('type_course');
+            $table->foreign('type_course')->references('id')->on('type_courses');
             $table->timestamps();
         });
     }

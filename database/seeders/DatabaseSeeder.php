@@ -6,9 +6,8 @@ use App\Models\Address;
 use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\CursoAluno;
-use App\Models\TipoCurso;
+use App\Models\TypeCourse;
 use App\Models\User;
-use Database\Factories\AddressFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,15 +19,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        foreach (TypeCourse::Type as $type) {
+            TypeCourse::create(['name' => $type]);
+        }
         User::factory(10)->create();
         Aluno::factory(10)->create();
         Address::factory(10)->create();
         Curso::factory(10)->create();
         CursoAluno::factory(10)->create();
 
-        $tipo_curso = ['Graduação', 'Tecnico'];
-        foreach ($tipo_curso as $tipo) {
-            TipoCurso::create(['name' => $tipo]);
-        }
+
     }
 }

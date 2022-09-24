@@ -43,6 +43,7 @@ Route::controller(CursoController::class)->middleware('auth')
     ->prefix('curso')->group(function () {
         Route::get('/', 'index')->name('curso.index');
         Route::get('/create', 'create')->name('curso.create');
+        Route::post('/store', 'store')->name('curso.store');
     });
 
 

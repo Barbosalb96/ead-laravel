@@ -17,6 +17,15 @@ $('#cep').on('keydown', function (e) {
     }
 })
 
+$(document).ready(function ($) {
+    $('#price').maskMoney({
+        prefix: '',
+        allowNegative: true,
+        thousands: '.', decimal: ',',
+        affixesStay: true
+    });
+})
+
 jQuery(function ($) {
     $("#cep").mask("99999-999");
     $("#telefone").mask("(99) 9 9999-9999");

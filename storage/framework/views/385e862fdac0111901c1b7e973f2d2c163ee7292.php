@@ -41,5 +41,6 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?php echo e(asset('js/ServiceCep.js')); ?>"></script>
 <script src="<?php echo e(asset('js/mask.js')); ?>"></script>
+<script src="<?php echo e(asset('js/jqueryMask.js')); ?>"></script>
 </html>
 <?php /**PATH C:\Users\Lucas Barbosa\Desktop\Projeto-Estudos\EAD-LARAVEL\resources\views/layouts/app.blade.php ENDPATH**/ ?>

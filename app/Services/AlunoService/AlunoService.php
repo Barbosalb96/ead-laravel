@@ -42,22 +42,22 @@ class AlunoService
             ->where('alunos.id', $aluno)->first();
     }
 
-    public function store(array $data): bool
+    public function store(array $alunoData): bool
     {
 
         try {
-            $aluno = Aluno::create(FomatDataAluno::formatDataAlunoHelper($data));
+            $aluno = Aluno::create(FomatDataAluno::formatDataAlunoHelper($alunoData));
 
-            CursoService::createCursoAluno($data, $aluno->id);
-
-            foreach (FomatMetaData::formatMetaDataHelper($data) as $key => $meta) {
+            (new CursoService)->createCursoAluno($alunoData, $aluno->id);
+            
+            foreach (FomatMetaData::formatMetaDataHelper($alunoData) as $key => $meta) {
                 $aluno->MetaData()->create([
                     'key' => $key,
                     'value' => $meta
                 ]);
             }
 
-            AddressService::createAddress($data, $aluno->id);
+            AddressService::createAddress($alunoData, $aluno->id);
 
             return true;
 
