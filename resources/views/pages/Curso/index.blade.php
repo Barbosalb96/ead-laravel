@@ -48,15 +48,19 @@
                                 @endif
                                 <a href="{{route('curso.edit',$curso->id)}}" class="btn btn-warning"><i
                                         class="fas fa-exclamation"></i>Editar</a>
+                                <a href="{{route('modulo.index',$curso->id)}}" class="btn btn-flickr"><i
+                                        class="fas fa-exclamation"></i>Modulos</a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+
                 <div class="d-flex justify-content-end mx-3">
                     {!! $cursos->render()!!}
                 </div>
             </div>
         </div>
     </main>
+
 @endsection

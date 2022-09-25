@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\RedirectHelper;
 use App\Http\Requests\AlunoRequest;
-use App\Models\Aluno;
 use App\Models\Curso;
 use App\Services\AlunoService\AlunoService;
 use Illuminate\Http\Request;
-use function redirect;
 use function response;
 use function view;
 
@@ -39,8 +38,13 @@ class AlunoController extends Controller
 
     public function store(AlunoRequest $request)
     {
-        (new AlunoService())->store($request->all());
-        return redirect()->route('alunos.index')->with(['success' => 'Novo aluno cadastrado com sucesso']);
+        $aluno = (new AlunoService())->store($request->all());
+
+        if ($aluno) {
+            return RedirectHelper::redirectRoute(['alunos.index', ''], RedirectHelper::SUCCESS);
+        }
+
+        return RedirectHelper::redirectRoute(['alunos.index', ''], RedirectHelper::ERROR);
     }
 
     public function alterStatus(Request $request)

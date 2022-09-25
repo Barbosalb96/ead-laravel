@@ -60,9 +60,17 @@
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('curso.index')}}">
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span
-                        class="align-middle">Criar Curso</span>
+                        class="align-middle">Listar Curso</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('curso.create')}}">
+                    <i class="align-middle" data-feather="bar-chart-2"></i> <span
+                        class="align-middle">Criar Curso</span>
+                </a>
+
+            </li>
+
 
 
             <li class="sidebar-header">

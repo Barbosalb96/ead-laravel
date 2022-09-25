@@ -84,7 +84,7 @@
                         <tr>
                             <td>{{$aluno->id}}</td>
                             <td>{{$aluno->nome}}</td>
-                            <td>{{$aluno->Curso[0]->time}}</td>
+                            <td>{{$aluno->Curso[0]->shiftName}}</td>
                             <td>{{$aluno->Curso[0]->name}}</td>
                             <td>{{ explode(' ',$aluno->created_at)[0] }}</td>
                             <td>{{$aluno->status}}</td>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlunoController as AlunoController;
 use App\Http\Controllers\CursoController as CursoController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,13 @@ Route::controller(CursoController::class)->middleware('auth')
         Route::post('/store', 'store')->name('curso.store');
         Route::get('/edit/{curso}', 'edit')->name('curso.edit');
         Route::put('/update', 'update')->name('curso.update');
+    });
+
+Route::controller(SubjectController::class)->middleware('auth')
+    ->prefix('modulo')->group(function () {
+        Route::get('/{curso_id}', 'index')->name('modulo.index');
+        Route::get('/create/{curso_id}', 'create')->name('modulo.create');
+        Route::post('/store', 'store')->name('disciplina.store');
     });
 
 

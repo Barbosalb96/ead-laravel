@@ -49,5 +49,10 @@ class Curso extends Model
         return $status[$this->status];
     }
 
+    public function Subject()
+    {
+        return $this->hasMany(Subject::class, 'course_id', 'id');
+    }
+
 
 }

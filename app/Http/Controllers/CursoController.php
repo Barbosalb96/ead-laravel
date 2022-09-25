@@ -31,16 +31,17 @@ class CursoController extends Controller
                 'tipo_curso' => TypeCourse::all(),
                 'curso' => $curso
             ]);
-
     }
 
     public function store(CursoRequest $request)
     {
         $curso = (new CursoService())->Store($request->all());
+
         if ($curso) {
-            return RedirectHelper::redirectRoute('curso.index', RedirectHelper::SUCCESS);
+            return RedirectHelper::redirectRoute(['curso.index',''], RedirectHelper::SUCCESS);
         }
-        return RedirectHelper::redirectRoute('curso.index', RedirectHelper::ERROR);
+
+        return RedirectHelper::redirectRoute(['curso.index',''], RedirectHelper::ERROR);
     }
 
     public function update(CursoRequest $request)
@@ -48,9 +49,9 @@ class CursoController extends Controller
         $curso = (new CursoService())->update($request->id, $request->except('id'));
 
         if ($curso) {
-            return RedirectHelper::redirectRoute('curso.index', RedirectHelper::SUCCESS);
+            return RedirectHelper::redirectRoute(['curso.index',''], RedirectHelper::SUCCESS);
         }
-        return RedirectHelper::redirectRoute('curso.index', RedirectHelper::ERROR);
 
+        return RedirectHelper::redirectRoute(['curso.index',''], RedirectHelper::ERROR);
     }
 }
