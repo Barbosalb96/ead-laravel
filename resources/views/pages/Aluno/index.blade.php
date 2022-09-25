@@ -59,13 +59,9 @@
                     </div>
                 </div>
             </div>
-            {{-- table de alunos --}}
 
-            @if(session()->has('success'))
-                <div class="alert alert-success" role="alert">
-                    {{session()->get('success')}}
-                </div>
-            @endif
+            @include('components.message')
+
             <div class="card pb-3">
                 <div class="card-header d-flex justify-content-between">
                     <h3>Alunos matriculados</h3>

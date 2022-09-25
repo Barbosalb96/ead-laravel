@@ -23,13 +23,20 @@ class CursoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|unique:cursos',
+        $rules = [
+            'name' => 'required',
             'amount_period' => 'required',
             'shift' => 'required',
             'modality' => 'required',
             'description' => 'required|min:20',
             'price' => 'required'
         ];
+
+        if (in_array($this->method(), ['POST'])) {
+            $rules['name'] = 'required|unique:cursos';
+        }
+
+        return $rules;
+
     }
 }

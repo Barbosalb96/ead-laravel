@@ -9,11 +9,7 @@
                 </div>
             </div>
 
-            @if(session()->has('success'))
-                <div class="alert alert-success" role="alert">
-                    {{session()->get('success')}}
-                </div>
-            @endif
+            @include('components.message')
 
             <div class="card pb-3">
                 <div class="card-header d-flex justify-content-between">
@@ -50,7 +46,7 @@
                                     <a href="" class="btn btn-success active-aluno" data-id="{{$curso->id}}"><i
                                             class="fas fa-times"></i>Ativar</a>
                                 @endif
-                                <a href="{{route('alunos.edit',$curso->id)}}" class="btn btn-warning"><i
+                                <a href="{{route('curso.edit',$curso->id)}}" class="btn btn-warning"><i
                                         class="fas fa-exclamation"></i>Editar</a>
                             </td>
                         </tr>

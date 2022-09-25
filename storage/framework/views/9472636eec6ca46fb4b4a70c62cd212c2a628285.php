@@ -7,12 +7,7 @@
                 </div>
             </div>
 
-            <?php if(session()->has('success')): ?>
-                <div class="alert alert-success" role="alert">
-                    <?php echo e(session()->get('success')); ?>
-
-                </div>
-            <?php endif; ?>
+            <?php echo $__env->make('components.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <div class="card pb-3">
                 <div class="card-header d-flex justify-content-between">
@@ -49,7 +44,7 @@
                                     <a href="" class="btn btn-success active-aluno" data-id="<?php echo e($curso->id); ?>"><i
                                             class="fas fa-times"></i>Ativar</a>
                                 <?php endif; ?>
-                                <a href="<?php echo e(route('alunos.edit',$curso->id)); ?>" class="btn btn-warning"><i
+                                <a href="<?php echo e(route('curso.edit',$curso->id)); ?>" class="btn btn-warning"><i
                                         class="fas fa-exclamation"></i>Editar</a>
                             </td>
                         </tr>

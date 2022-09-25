@@ -18,8 +18,15 @@ class CursoService
 
     public function Store(array $curso)
     {
-        Curso::create($curso);
+        return Curso::create($curso);
         return true;
+    }
+
+    public function update($cursoId, $cursoData)
+    {
+        $curso = Curso::find($cursoId);
+        $curso = $curso->update($cursoData);
+        return $curso;
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\RedirectHelper;
 use App\Http\Requests\CursoRequest;
 use App\Models\Curso;
 use App\Models\TipoCurso;
@@ -23,9 +24,33 @@ class CursoController extends Controller
             ['tipo_curso' => TypeCourse::all()]);
     }
 
+    public function edit(Curso $curso)
+    {
+        return view('pages.Curso.edit',
+            [
+                'tipo_curso' => TypeCourse::all(),
+                'curso' => $curso
+            ]);
+
+    }
+
     public function store(CursoRequest $request)
     {
-        (new CursoService())->Store($request->all());
-        return redirect()->route('curso.index');
+        $curso = (new CursoService())->Store($request->all());
+        if ($curso) {
+            return RedirectHelper::redirectRoute('curso.index', RedirectHelper::SUCCESS);
+        }
+        return RedirectHelper::redirectRoute('curso.index', RedirectHelper::ERROR);
+    }
+
+    public function update(CursoRequest $request)
+    {
+        $curso = (new CursoService())->update($request->id, $request->except('id'));
+
+        if ($curso) {
+            return RedirectHelper::redirectRoute('curso.index', RedirectHelper::SUCCESS);
+        }
+        return RedirectHelper::redirectRoute('curso.index', RedirectHelper::ERROR);
+
     }
 }

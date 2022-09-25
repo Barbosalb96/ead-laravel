@@ -44,6 +44,8 @@ Route::controller(CursoController::class)->middleware('auth')
         Route::get('/', 'index')->name('curso.index');
         Route::get('/create', 'create')->name('curso.create');
         Route::post('/store', 'store')->name('curso.store');
+        Route::get('/edit/{curso}', 'edit')->name('curso.edit');
+        Route::put('/update', 'update')->name('curso.update');
     });
 
 

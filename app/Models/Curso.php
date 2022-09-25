@@ -34,7 +34,7 @@ class Curso extends Model
 
     public function getModalityNameAttribute()
     {
-        $modality = [1 => 'Distancia', 2 => 'Presencial', 3 => 'Semi-Presencial'];
+        $modality = [1 => 'Presencial', 2 => 'Distancia', 3 => 'Semi-Presencial'];
         return $modality[$this->modality];
     }
 

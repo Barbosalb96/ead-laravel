@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
             TypeCourse::create(['name' => $type]);
         }
         User::factory(10)->create();
-        Aluno::factory(10)->create();
-        Address::factory(10)->create();
-        Curso::factory(10)->create();
-        CursoAluno::factory(10)->create();
+//        Aluno::factory(10)->create();
+//        Address::factory(10)->create();
+//        Curso::factory(10)->create();
+//        CursoAluno::factory(10)->create();
 
 
     }
