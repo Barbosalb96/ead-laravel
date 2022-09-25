@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $cursos = \App\Models\Curso::with('Subject')->get();
+    return view('welcome', ['cursos' => $cursos]);
 });
 
 Route::get('/dashboard', function () {
