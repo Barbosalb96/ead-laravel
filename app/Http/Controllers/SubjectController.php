@@ -27,10 +27,11 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $response = (new SubjectService())->store($request->all());
+
         if ($response) {
-            return RedirectHelper::redirectRoute(['curso.index', $request->curso_id], RedirectHelper::SUCCESS);
+            return RedirectHelper::redirectRoute(['modulo.index', $request->course_id], RedirectHelper::SUCCESS);
         }
 
-        return RedirectHelper::redirectRoute(['curso.index', $request->curso_id], RedirectHelper::ERROR);
+        return RedirectHelper::redirectRoute(['modulo.index', $request->course_id], RedirectHelper::ERROR);
     }
 }
