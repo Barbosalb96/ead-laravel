@@ -19,7 +19,9 @@ class SubjectController extends Controller
 
     public function create(int $course)
     {
-        return view('pages.Subject.create', ['course' => Course::find($course)]);
+        return view('pages.Subject.create',
+            ['course' => Course::find($course)]
+        );
     }
 
     public function store(Request $request)

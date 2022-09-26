@@ -40,6 +40,8 @@ class StudentsController extends Controller
     {
         $student = (new StudentsService())->store($request->all());
 
+
+        dd($student);
         if ($student) {
             return RedirectHelper::redirectRoute(['students.index', ''], RedirectHelper::SUCCESS);
         }
