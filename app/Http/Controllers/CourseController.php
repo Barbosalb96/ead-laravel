@@ -6,8 +6,7 @@ use App\Http\Helpers\RedirectHelper;
 use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use App\Models\TypeCourse;
-
-use App\Services\courseService\CourseService;
+use App\Services\CourseService\CourseService;
 use function view;
 
 class CourseController extends Controller

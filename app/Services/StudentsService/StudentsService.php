@@ -6,7 +6,7 @@ use App\Http\Helpers\FormatDataStudent;
 use App\Http\Helpers\FomatMetaData;
 use App\Models\Student;
 use App\Services\AddressService\AddressService;
-use App\Services\courseService\CourseService;
+use App\Services\CourseService\CourseService;
 use Illuminate\Support\Facades\Log;
 
 class StudentsService
@@ -14,7 +14,7 @@ class StudentsService
     public function studentsRecent()
     {
         return Student::with(['Course', 'MetaData'])
-            ->tenRecent();
+                 ->tenRecent();
     }
 
 
@@ -44,7 +44,6 @@ class StudentsService
 
     public function store(array $studentData): bool
     {
-
         try {
 
             $student = Student::create(FormatDataStudent::formatDataStudentHelper($studentData));
@@ -66,7 +65,6 @@ class StudentsService
             return false;
         }
     }
-
 
 }
 
