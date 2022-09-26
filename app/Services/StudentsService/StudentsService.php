@@ -7,6 +7,7 @@ use App\Http\Helpers\FomatMetaData;
 use App\Models\Student;
 use App\Services\AddressService\AddressService;
 use App\Services\courseService\CourseService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class StudentsService
@@ -46,6 +47,8 @@ class StudentsService
     {
 
         try {
+
+            DB::transaction();
             $student = Student::create(FomatDataAluno::formatDataAlunoHelper($studentData));
 
             (new CourseService())->createStudentCourse($studentData, $student->id);
@@ -59,10 +62,11 @@ class StudentsService
 
 
             AddressService::createAddress($studentData, $student->id);
-
+            DB::commit();
             return true;
 
         } catch (\Throwable $e) {
+            DB::rollBack();
             Log::debug($e->getMessage());
             return false;
         }
