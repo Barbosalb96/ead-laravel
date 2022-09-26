@@ -2,7 +2,7 @@
 
 namespace App\Services\StudentsService;
 
-use App\Http\Helpers\FomatDataAluno;
+use App\Http\Helpers\FormatDataStudent;
 use App\Http\Helpers\FomatMetaData;
 use App\Models\Student;
 use App\Services\AddressService\AddressService;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class StudentsService
 {
-    public function alunoRecent()
+    public function studentsRecent()
     {
         return Student::with(['Course', 'MetaData'])
             ->tenRecent();
@@ -47,7 +47,7 @@ class StudentsService
 
         try {
 
-            $student = Student::create(FomatDataAluno::formatDataAlunoHelper($studentData));
+            $student = Student::create(FormatDataStudent::formatDataAlunoHelper($studentData));
 
             (new CourseService())->createStudentCourse($studentData, $student->id);
 
@@ -58,12 +58,10 @@ class StudentsService
                 ]);
             }
 
-
             AddressService::createAddress($studentData, $student->id);
             return true;
 
         } catch (\Throwable $e) {
-            DB::rollBack();
             Log::debug($e->getMessage());
             return false;
         }

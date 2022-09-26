@@ -2,7 +2,7 @@
 
 namespace App\Http\Helpers;
 
-class FomatDataAluno
+class FormatDataStudent
 {
     public static function formatDataAlunoHelper(array $data): array
     {

@@ -15,7 +15,7 @@ class StudentsController extends Controller
     public function index()
     {
         return view('pages.Student.index', [
-            'students' => (new StudentsService())->alunoRecent()
+            'students' => (new StudentsService())->studentsRecent()
         ]);
     }
 
@@ -40,8 +40,6 @@ class StudentsController extends Controller
     {
         $student = (new StudentsService())->store($request->all());
 
-
-        dd($student);
         if ($student) {
             return RedirectHelper::redirectRoute(['students.index', ''], RedirectHelper::SUCCESS);
         }
