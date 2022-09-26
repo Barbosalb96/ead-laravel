@@ -49,6 +49,6 @@ class StudentsController extends Controller
 
     public function alterStatus(Request $request)
     {
-        return response()->json((new StudentsService())->statusAluno($request->id));
+        return response()->json((new StudentsService())->statusStudent($request->id));
     }
 }

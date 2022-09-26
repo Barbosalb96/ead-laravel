@@ -18,7 +18,7 @@ class StudentsService
     }
 
 
-    public function statusAluno($id)
+    public function statusStudent($id)
     {
         try {
             $student = Student::where('id', $id)->first();
@@ -47,7 +47,7 @@ class StudentsService
 
         try {
 
-            $student = Student::create(FormatDataStudent::formatDataAlunoHelper($studentData));
+            $student = Student::create(FormatDataStudent::formatDataStudentHelper($studentData));
 
             (new CourseService())->createStudentCourse($studentData, $student->id);
 

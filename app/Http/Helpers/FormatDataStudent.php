@@ -4,7 +4,7 @@ namespace App\Http\Helpers;
 
 class FormatDataStudent
 {
-    public static function formatDataAlunoHelper(array $data): array
+    public static function formatDataStudentHelper(array $data): array
     {
         return [
             "nome" => $data['name'],
