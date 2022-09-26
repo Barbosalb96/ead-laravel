@@ -80,7 +80,7 @@ $('.active-aluno').on('click', function (e) {
         if (result.isConfirmed) {
             response = $.ajax({
                 type: 'PUT',
-                url: "aluno/alter-status",
+                url: "students/alter-status",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -112,7 +112,7 @@ $('.disable-aluno').on('click', function (e) {
         if (result.isConfirmed) {
             response = $.ajax({
                 type: 'PUT',
-                url: "aluno/alter-status",
+                url: "students/alter-status",
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
