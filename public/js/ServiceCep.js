@@ -9,10 +9,10 @@ $('#cep').on('keydown', function (e) {
                 $(this).focus()
                 return;
             }
-            $('#endereco').val(data.logradouro);
-            $('#complemento').val(data.complemento);
+            $('#address').val(data.logradouro);
+            $('#complement').val(data.complemento);
             $('#uf').val(data.uf);
-            $('#bairro').val(data.bairro);
+            $('#neighborhood').val(data.bairro);
         });
     }
 })
@@ -86,7 +86,7 @@ $('.active-aluno').on('click', function (e) {
                 },
                 data: {id: $(this).data('id')},
                 success: function (data) {
-                    Swal.fire('Ativado!', 'Aluno ativado com sucesso.', 'success')
+                    Swal.fire('Ativado!', 'Student ativado com sucesso.', 'success')
                     setInterval(function () {
                         document.location.reload(true);
                     }, 2000)
@@ -118,7 +118,7 @@ $('.disable-aluno').on('click', function (e) {
                 },
                 data: {id: $(this).data('id')},
                 success: function (data) {
-                    Swal.fire('Desativado!', 'Aluno desativado com sucesso.', 'success')
+                    Swal.fire('Desativado!', 'Student desativado com sucesso.', 'success')
                     setInterval(function () {
                         document.location.reload(true);
                     }, 2000)

@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TypeCourse extends Model
+class StudentCourse extends Model
 {
-    const Type = ['Graduação', 'Tecnico', 'Licenciatura'];
-
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'students_id',
+        'course_id',
+    ];
+
 }

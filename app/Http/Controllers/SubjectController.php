@@ -3,25 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Helpers\RedirectHelper;
-use App\Models\Curso;
+use App\Models\Course;
 use App\Services\SubjectService\SubjectService;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    public function index(int $curso)
+    public function index(int $course)
     {
-        return view('pages.Modulos.index',
+        return view('pages.Subject.index',
             [
-                'curso' => Curso::with('Subject')->find($curso),
+                'course' => Course::with('Subject')->find($course),
 
             ]
         );
     }
 
-    public function create(int $curso)
+    public function create(int $course)
     {
-        return view('pages.Modulos.create', ['curso' => Curso::find($curso)]);
+        return view('pages.Subject.create', ['course' => Course::find($course)]);
     }
 
     public function store(Request $request)
@@ -29,9 +29,9 @@ class SubjectController extends Controller
         $response = (new SubjectService())->store($request->all());
 
         if ($response) {
-            return RedirectHelper::redirectRoute(['modulo.index', $request->course_id], RedirectHelper::SUCCESS);
+            return RedirectHelper::redirectRoute(['subject.index', $request->course_id], RedirectHelper::SUCCESS);
         }
 
-        return RedirectHelper::redirectRoute(['modulo.index', $request->course_id], RedirectHelper::ERROR);
+        return RedirectHelper::redirectRoute(['subject.index', $request->course_id], RedirectHelper::ERROR);
     }
 }

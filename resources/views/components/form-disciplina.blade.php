@@ -10,15 +10,15 @@
                            id="name">
                 </div>
                 <div class="mb-3 col-md-6">
-                    <label class="form-label" for="modulo_id">Modulo<span
+                    <label class="form-label" for="module_id">Modulo<span
                             class="text-danger">*</span></label>
-                    <select name="modulo_id" class="form-control" id="">
+                    <select name="module_id" class="form-control" id="">
                         <option value="">Selecione o modulo</option>
 
                         @php
-                            $quantity =  $curso->amount_period;
-                             for($curso->amount_period = 1;$curso->amount_period <= $quantity;$curso->amount_period ++){
-                                echo ' <option value="'.$curso->amount_period.'">Modulo '.$curso->amount_period.'</option>';
+                            $quantity =  $course->amount_period;
+                             for($course->amount_period = 1;$course->amount_period <= $quantity;$course->amount_period ++){
+                                echo ' <option value="'.$course->amount_period.'">Modulo '.$course->amount_period.'</option>';
                              }
                         @endphp
                     </select>

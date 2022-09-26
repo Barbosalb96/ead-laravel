@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AlunoController as AlunoController;
-use App\Http\Controllers\CursoController as CursoController;
+use App\Http\Controllers\studentsController as studentsController;
+use App\Http\Controllers\courseController as courseController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $cursos = \App\Models\Curso::with('Subject')->get();
-    return view('welcome', ['cursos' => $cursos]);
+    $courses = \App\Models\Course::with('Subject')->get();
+    return view('welcome', ['courses' => $courses]);
 });
 
 Route::get('/dashboard', function () {
@@ -26,35 +26,35 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::controller(AlunoController::class)->middleware('auth')
-    ->prefix('aluno')->group(function () {
-        Route::get('/', 'index')->name('alunos.index');
-        Route::get('/create', 'create')->name('alunos.create');
-        Route::get('/edit/{id}', 'edit')->name('alunos.edit');
-        Route::post('/store', 'store')->name('alunos.store');
+Route::controller(studentsController::class)->middleware('auth')
+    ->prefix('students')->group(function () {
+        Route::get('/', 'index')->name('students.index');
+        Route::get('/create', 'create')->name('students.create');
+        Route::get('/edit/{id}', 'edit')->name('students.edit');
+        Route::post('/store', 'store')->name('students.store');
         Route::put('/alter-status', 'alterStatus');
     });
 
 
-Route::get('get-amount-curso/{id}', function ($id) {
-    return \App\Models\Curso::where('id', $id)->get();
+Route::get('get-amount-course/{id}', function ($id) {
+    return \App\Models\Course::where('id', $id)->get();
 });
 
 
-Route::controller(CursoController::class)->middleware('auth')
-    ->prefix('curso')->group(function () {
-        Route::get('/', 'index')->name('curso.index');
-        Route::get('/create', 'create')->name('curso.create');
-        Route::post('/store', 'store')->name('curso.store');
-        Route::get('/edit/{curso}', 'edit')->name('curso.edit');
-        Route::put('/update', 'update')->name('curso.update');
+Route::controller(courseController::class)->middleware('auth')
+    ->prefix('course')->group(function () {
+        Route::get('/', 'index')->name('course.index');
+        Route::get('/create', 'create')->name('course.create');
+        Route::post('/store', 'store')->name('course.store');
+        Route::get('/edit/{course}', 'edit')->name('course.edit');
+        Route::put('/update', 'update')->name('course.update');
     });
 
 Route::controller(SubjectController::class)->middleware('auth')
-    ->prefix('modulo')->group(function () {
-        Route::get('/{curso_id}', 'index')->name('modulo.index');
-        Route::get('/create/{curso_id}', 'create')->name('modulo.create');
-        Route::post('/store', 'store')->name('disciplina.store');
+    ->prefix('subject')->group(function () {
+        Route::get('/{course_id}', 'index')->name('subject.index');
+        Route::get('/create/{course_id}', 'create')->name('subject.create');
+        Route::post('/store', 'store')->name('subject.store');
     });
 
 
