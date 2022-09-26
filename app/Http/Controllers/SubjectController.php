@@ -11,10 +11,7 @@ class SubjectController extends Controller
 {
     public function index(int $course)
     {
-        $course = Course::with(['Subject' => function ($query) {
-                     $query->orderBy('module_id', 'asc');
-                }])->find($course);
-
+        $course = (new SubjectService())->getSubjectCourse($course);
         return view('pages.Subject.index',
             ['course' => $course]
         );
