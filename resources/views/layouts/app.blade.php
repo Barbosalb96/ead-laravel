@@ -41,5 +41,6 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('js/ServiceCep.js')}}"></script>
 <script src="{{asset('js/mask.js')}}"></script>
+<script src="{{asset('js/requisicoes.js')}}"></script>
 <script src="{{asset('js/jqueryMask.js')}}"></script>
 </html>

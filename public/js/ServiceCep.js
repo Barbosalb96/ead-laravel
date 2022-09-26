@@ -1,21 +1,4 @@
-$('#cep').on('keydown', function (e) {
-    let cep = $(this).val()
-    if (e.key == "Tab") {
-        $.get("https://viacep.com.br/ws/" + cep + "/json/", function (data) {
-            if (data.erro) {
-                Swal.fire({
-                    icon: 'error', title: 'Oops...', text: 'Cep não foi encontrado'
-                })
-                $(this).focus()
-                return;
-            }
-            $('#address').val(data.logradouro);
-            $('#complement').val(data.complemento);
-            $('#uf').val(data.uf);
-            $('#neighborhood').val(data.bairro);
-        });
-    }
-})
+
 
 $(document).ready(function ($) {
     $('#price').maskMoney({
@@ -67,86 +50,5 @@ function validarCPF(cpf) {
     return true;
 }
 
-$('.active-aluno').on('click', function (e) {
-    e.preventDefault()
-    Swal.fire({
-        title: 'Deseja ativar o aluno',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ativar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            response = $.ajax({
-                type: 'PUT',
-                url: "students/alter-status",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {id: $(this).data('id')},
-                success: function (data) {
-                    Swal.fire('Ativado!', 'Student ativado com sucesso.', 'success')
-                    setInterval(function () {
-                        document.location.reload(true);
-                    }, 2000)
-                    return;
-                },
-                error: function (data) {
-                    Swal.fire('Error!', 'Algo deu errado', 'error')
-                }
-            });
-        }
-    })
-})
-$('.disable-aluno').on('click', function (e) {
-    e.preventDefault()
-    Swal.fire({
-        title: 'Deseja desativar o aluno',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ativar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            response = $.ajax({
-                type: 'PUT',
-                url: "students/alter-status",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {id: $(this).data('id')},
-                success: function (data) {
-                    Swal.fire('Desativado!', 'Student desativado com sucesso.', 'success')
-                    setInterval(function () {
-                        document.location.reload(true);
-                    }, 2000)
-                    return;
-                },
-                error: function (data) {
-                    Swal.fire('Error!', 'Algo deu errado', 'error')
-                }
-            });
-        }
-    })
-})
 
 
-$('#curso').on('click', function (e) {
-    curso = $(this).val();
-    $('#periodo').html('')
-    $.get('../get-amount-curso/' + curso).then(function (e) {
-        for (i = 1; i <= e[0].amount_period; i++) {
-            $('#periodo').append(` <option value="${i}">${i}</option>`)
-        }
-    });
-})
-
-
-$('#gerar-codigo').on('click', function (e) {
-    e.preventDefault()
-    let cod = Math.random() * (9 - 10) + 10000000;
-    let newcod = String(cod).split(".")[1];
-    $('#codigo').val(newcod);
-})
