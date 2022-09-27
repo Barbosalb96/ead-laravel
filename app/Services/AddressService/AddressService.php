@@ -6,15 +6,15 @@ use App\Models\Student;
 
 class AddressService
 {
-    public static function createAddress(array $data, int $aluno)
+    public static function createAddress(array $address, int $student)
     {
-        $aluno = Student::where('id', $aluno)->first();
-        return $aluno->Address()->create([
-            "zip" => $data['zip'],
-            "address" => $data['address'],
-            "complement" => $data['complement'],
-            "neighborhood" => $data['neighborhood'],
-            "uf" => $data['uf'],
+        $student = Student::where('id', $student)->first();
+        return $student->Address()->create([
+            "zip" => $address['zip'],
+            "address" => $address['address'],
+            "complement" => $address['complement'],
+            "neighborhood" => $address['neighborhood'],
+            "uf" => $address['uf'],
         ]);
 
     }
