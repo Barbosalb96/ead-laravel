@@ -11,7 +11,7 @@ class SubjectService
     {
         return Course::with(['Subject' => function ($query) {
             $query->orderBy('module_id', 'asc');
-        }])->find($course);
+        }])->findOrFail($course);
     }
 
     public function store(array $subjectData)
