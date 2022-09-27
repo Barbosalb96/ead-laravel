@@ -29,6 +29,11 @@ class Student extends Model
         return $this->belongsToMany(Course::class, StudentCourse::class, 'students_id', 'course_id');
     }
 
+    public function CourseStudent()
+    {
+        return $this->belongsToMany(Subject::class, StudentGrade::class, 'subject_id', 'student_id');
+    }
+
     public function MetaData()
     {
         return $this->hasMany(UserMetaData::class, 'student_id', 'id');

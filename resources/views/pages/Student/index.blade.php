@@ -76,7 +76,7 @@
                         <th>Curso</th>
                         <th>Data criação</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th class="text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -88,7 +88,7 @@
                             <td>{{$student->Course[0]->name}}</td>
                             <td>{{ explode(' ',$student->created_at)[0] }}</td>
                             <td>{{$student->status}}</td>
-                            <td>
+                            <td class="d-flex justify-content-around ">
                                 @if($student->status == 'Ativo')
                                     <a href="" class="btn btn-danger disable-aluno" data-id="{{$student->id}}"><i
                                             class="fas fa-times"></i>Desativar</a>
@@ -98,6 +98,8 @@
                                 @endif
                                 <a href="{{route('students.edit',$student->id)}}" class="btn btn-warning"><i
                                         class="fas fa-exclamation"></i>Editar</a>
+                                    <a href="{{route('studentscreen.index',$student->id)}}" class="btn btn-info"><i
+                                        class="fas fa-exclamation"></i>Informações</a>
                             </td>
                         </tr>
                     @endforeach

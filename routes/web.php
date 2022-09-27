@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\studentsController as studentsController;
 use App\Http\Controllers\courseController as courseController;
+use App\Http\Controllers\StudentScreenController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,11 +37,6 @@ Route::controller(studentsController::class)->middleware('auth')
     });
 
 
-Route::get('get-amount-course/{id}', function ($id) {
-    return \App\Models\Course::where('id', $id)->get();
-});
-
-
 Route::controller(courseController::class)->middleware('auth')
     ->prefix('course')->group(function () {
         Route::get('/', 'index')->name('course.index');
@@ -58,6 +54,10 @@ Route::controller(SubjectController::class)->middleware('auth')
         Route::post('/store', 'store')->name('subject.store');
     });
 
+Route::controller(StudentScreenController::class)->middleware('auth')
+    ->prefix('StudentScreen')->group(function () {
+        Route::get('/{studentId}', 'index')->name('studentscreen.index');
+    });
 
 require __DIR__ . '/auth.php';
 

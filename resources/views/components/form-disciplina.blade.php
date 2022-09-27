@@ -9,7 +9,7 @@
                     <input required type="text" class="form-control" name="name"
                            id="name">
                 </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-md-3">
                     <label class="form-label" for="module_id">Modulo<span
                             class="text-danger">*</span></label>
                     <select name="module_id" class="form-control" id="">
@@ -22,6 +22,12 @@
                              }
                         @endphp
                     </select>
+
+                </div>
+                <div class="mb-3 col-md-3">
+                    <label class="form-label" for="module_id">Carga Horaria<span
+                            class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="workload">
 
                 </div>
 

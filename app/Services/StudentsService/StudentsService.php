@@ -14,9 +14,8 @@ class StudentsService
     public function studentsRecent()
     {
         return Student::with(['Course', 'MetaData'])
-                 ->tenRecent();
+            ->tenRecent();
     }
-
 
     public function statusStudent($id)
     {
@@ -68,6 +67,14 @@ class StudentsService
             Log::debug($e->getMessage());
             return false;
         }
+    }
+
+
+    public function infoStudent(int $studentId)
+    {
+        return Student::with(['CourseStudent', 'Course'=>function($query){
+            $query->with('Subject');
+        }])->findOrFail($studentId)->toArray();
     }
 
 }

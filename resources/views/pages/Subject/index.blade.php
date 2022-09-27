@@ -14,6 +14,7 @@
                 <tr>
                     <th>Codigo</th>
                     <th>Nome</th>
+                    <th>Carga Horaria</th>
                     <th>Modulo</th>
                 </tr>
                 </thead>
@@ -23,8 +24,8 @@
                     <tr>
                         <td>{{$subject->id}}</td>
                         <td>{{$subject->name}}</td>
+                        <td>{{$subject->workload}}h</td>
                         <td>Modulo - {{$subject->module_id}}</td>
-
                     </tr>
                 @endforeach
                 </tbody>
