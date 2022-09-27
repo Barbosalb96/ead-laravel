@@ -23,7 +23,7 @@ class StudentsController extends Controller
     {
         return view('pages.Student.create',
             [
-                'courses' => Course::all()
+                'courses' => Course::active()->get()
             ]);
     }
 

@@ -41,9 +41,9 @@
                             <td>{{$course->statusName}}</td>
                             <td>
                                 @if($course->status == 1)
-                                    <a href="" class="btn btn-danger"><i class="fas fa-times"></i>Desativar</a>
+                                    <a href="" class="btn btn-danger disabled-status-course" data-id="{{$course->id}}"><i class="fas fa-times"></i>Desativar</a>
                                 @else
-                                    <a href="" class="btn btn-success active-aluno" data-id="{{$course->id}}"><i
+                                    <a href="" class="btn btn-success active-status-course" data-id="{{$course->id}}"><i
                                             class="fas fa-times"></i>Ativar</a>
                                 @endif
                                 <a href="{{route('course.edit',$course->id)}}" class="btn btn-warning"><i

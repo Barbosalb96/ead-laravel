@@ -23,13 +23,17 @@ class StudentsService
         try {
             $student = Student::where('id', $id)->first();
 
-            if (isset($student) && $student->status == 'Desativado') {
+            if (!empty($student) && $student->status == 0) {
                 $student->update(['status' => 1]);
                 return $student;
             }
 
-            $student->update(['status' => 0]);
+            if (!empty($student) && $student->status == 1) {
+                $student->update(['status' => 0]);
+                return $student;
+            }
 
+            return false;
         } catch (\Throwable $e) {
             return $e->getMessage();
         }

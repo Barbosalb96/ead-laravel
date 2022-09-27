@@ -7,6 +7,7 @@ use App\Http\Requests\CourseRequest;
 use App\Models\Course;
 use App\Models\TypeCourse;
 use App\Services\CourseService\CourseService;
+use Illuminate\Http\Request;
 use function view;
 
 class CourseController extends Controller
@@ -53,4 +54,10 @@ class CourseController extends Controller
 
         return RedirectHelper::redirectRoute(['course.index', ''], RedirectHelper::ERROR);
     }
+
+    public function alterCourseStatus(Request $request)
+    {
+     $courser = (new CourseService())->alterCourseStatus($request->id);
+    }
+
 }

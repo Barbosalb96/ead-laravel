@@ -30,6 +30,7 @@ $('.active-aluno').on('click', function (e) {
         }
     })
 })
+
 $('.disable-aluno').on('click', function (e) {
     e.preventDefault()
     Swal.fire({
@@ -50,6 +51,71 @@ $('.disable-aluno').on('click', function (e) {
                 data: {id: $(this).data('id')},
                 success: function (data) {
                     Swal.fire('Desativado!', 'Student desativado com sucesso.', 'success')
+                    setInterval(function () {
+                        document.location.reload(true);
+                    }, 2000)
+                    return;
+                },
+                error: function (data) {
+                    Swal.fire('Error!', 'Algo deu errado', 'error')
+                }
+            });
+        }
+    })
+})
+
+$('.disabled-status-course').on('click', function (e) {
+    e.preventDefault()
+    Swal.fire({
+        title: 'Deseja desativar este curso',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ativar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            response = $.ajax({
+                type: 'PUT',
+                url: "course/alter-status",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {id: $(this).data('id')},
+                success: function (data) {
+                    Swal.fire('Desativado!', 'Curso desativado com sucesso.', 'success')
+                    setInterval(function () {
+                        document.location.reload(true);
+                    }, 2000)
+                    return;
+                },
+                error: function (data) {
+                    Swal.fire('Error!', 'Algo deu errado', 'error')
+                }
+            });
+        }
+    })
+})
+$('.active-status-course').on('click', function (e) {
+    e.preventDefault()
+    Swal.fire({
+        title: 'Deseja ativar este curso',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ativar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            response = $.ajax({
+                type: 'PUT',
+                url: "course/alter-status",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {id: $(this).data('id')},
+                success: function (data) {
+                    Swal.fire('Ativado!', 'Curso ativado com sucesso.', 'success')
                     setInterval(function () {
                         document.location.reload(true);
                     }, 2000)

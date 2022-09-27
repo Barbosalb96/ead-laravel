@@ -48,6 +48,7 @@ Route::controller(courseController::class)->middleware('auth')
         Route::post('/store', 'store')->name('course.store');
         Route::get('/edit/{course}', 'edit')->name('course.edit');
         Route::put('/update', 'update')->name('course.update');
+        Route::put('/alter-status', 'alterCourseStatus');
     });
 
 Route::controller(SubjectController::class)->middleware('auth')

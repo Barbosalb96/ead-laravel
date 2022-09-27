@@ -9,6 +9,9 @@ class Course extends Model
 {
     use HasFactory;
 
+    const DESATIVADO = 0;
+    const ATIVO = 1;
+
     protected $fillable = [
         'name',
         'amount_period',
@@ -51,6 +54,11 @@ class Course extends Model
     public function Subject()
     {
         return $this->hasMany(Subject::class, 'course_id', 'id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::ATIVO);
     }
 
 }

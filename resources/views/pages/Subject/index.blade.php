@@ -15,7 +15,6 @@
                     <th>Codigo</th>
                     <th>Nome</th>
                     <th>Modulo</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,14 +24,7 @@
                         <td>{{$subject->id}}</td>
                         <td>{{$subject->name}}</td>
                         <td>Modulo - {{$subject->module_id}}</td>
-                        <td>
-                            @if($course->name == 1)
-                                <a href="" class="btn btn-danger"><i class="fas fa-times"></i>Desativar</a>
-                            @else
-                                <a href="" class="btn btn-success active-aluno" data-id="{{$course->id}}"><i
-                                        class="fas fa-times"></i>Ativar</a>
-                            @endif
-                        </td>
+
                     </tr>
                 @endforeach
                 </tbody>

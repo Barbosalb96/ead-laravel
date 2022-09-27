@@ -16,6 +16,27 @@ class CourseService
         StudentCourse::create($course);
     }
 
+    public function alterCourseStatus(int $courser_id)
+    {
+        try {
+            $courser = Course::findOrFail($courser_id);
+
+            if (!empty($courser) && $courser->status == 0) {
+                $courser->update(['status' => 1]);
+                return $courser;
+            }
+
+            if (!empty($courser) && $courser->status == 1) {
+                $courser->update(['status' => 0]);
+                return $courser;
+            }
+
+            return false;
+        } catch (\Throwable $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function Store(array $course)
     {
         return Course::create($course);
