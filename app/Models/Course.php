@@ -47,7 +47,7 @@ class Course extends Model
 
     public function getStatusNameAttribute()
     {
-        $status = [0 => 'desativado', 1 => 'Ativo'];
+        $status = [0 => 'Desativado', 1 => 'Ativo'];
         return $status[$this->status];
     }
 

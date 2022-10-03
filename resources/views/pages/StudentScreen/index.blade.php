@@ -94,7 +94,7 @@
                             </div>
                         </div>
 
-                        {{dd($info)}}
+{{--                                                                        {{dd($info)}}--}}
 
                         <div class="tab-pane fade text-center" id="tab-2" role="tabpanel">
                             <table class="table table-striped table-hover">
@@ -108,17 +108,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($info['course'][0]['subject'] as $subject)
-                                    @foreach($info['course_student'][0]['subject'] as $subject)
-
-                                        <tr>
-                                            <td>{{$subject['name']}}</td>
-                                            <td>{{$subject['name']}}</td>
-                                            <td>{{$subject['name']}}</td>
-                                            <td>{{$subject['name']}}</td>
-                                            <td>{{$subject['workload']}}</td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($info['CourseStudent'] as $subject)
+                                    {{dd($subject)}}
+                                    <tr>
+{{--                                        @foreach($info['course_student'] as $course_student)--}}
+{{--                                            @if($subject['id'] == $course_student['subject_id'])--}}
+{{--                                                <td>{{$course_student['status']}}</td>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+                                        <td>{{$subject['workload']}}</td>
+                                        <td>{{$subject['name']}}</td>
+                                        <td>{{$subject['module_id']}}</td>
+{{--                                        @foreach($info['course_student'] as $course_student)--}}
+{{--                                            @if($subject['id'] == $course_student['subject_id'])--}}
+{{--                                                <td>{{$course_student['media']}}</td>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>

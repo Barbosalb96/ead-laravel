@@ -4,14 +4,14 @@ namespace App\Http\Helpers;
 
 class FormatDataStudent
 {
-    public static function formatDataStudentHelper(array $data): array
+    public static function formatDataStudentHelper(array $students): array
     {
         return [
-            "nome" => $data['name'],
-            "cpf" => $data['cpf'],
-            "telefone-cel" => $data['telefone'],
-            "telefone" => $data['telefone-outro'],
-            "email" => $data['email'],
+            "nome" => $students['name'],
+            "cpf" => $students['cpf'],
+            "telefone-cel" => $students['telefone'],
+            "telefone" => $students['telefone-outro'],
+            "email" => $students['email'],
         ];
     }
 

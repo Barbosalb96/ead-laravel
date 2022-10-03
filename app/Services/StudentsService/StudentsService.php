@@ -72,8 +72,8 @@ class StudentsService
 
     public function infoStudent(int $studentId)
     {
-        return Student::with(['CourseStudent', 'Course'=>function($query){
-            $query->with('Subject');
+        return Student::with(['CourseStudent' => function ($q) {
+            $q->with('subject');
         }])->findOrFail($studentId)->toArray();
     }
 

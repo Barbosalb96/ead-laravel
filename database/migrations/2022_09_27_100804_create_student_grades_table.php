@@ -15,9 +15,12 @@ class CreateStudentGradesTable extends Migration
     {
         Schema::create('student_grades', function (Blueprint $table) {
             $table->id();
-            $table->float('note', 2, 1);
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->float('note_1', 2, 1);
+            $table->float('note_2', 2, 1);
+            $table->float('note_3', 2, 1);
+            $table->float('note_4', 2, 1);
+            $table->float('media', 2, 1);
+            $table->boolean('status')->default(3); //1 aprovado - 2 reprovado - 3 sem dadosphp
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->unsignedBigInteger('student_id');

@@ -11,6 +11,5 @@ class StudentScreenController extends Controller
     {
         $data = (new StudentsService())->infoStudent($studentID);
         return view('pages.StudentScreen.index', ['info' => $data]);
-
     }
 }
